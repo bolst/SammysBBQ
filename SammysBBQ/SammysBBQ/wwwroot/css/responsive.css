@@ -1,0 +1,13 @@
+﻿/* responsive.css */
+
+@media (max-width: 768px) {
+    .menu-list {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items vertically */
+    }
+
+    .menu-item {
+        margin-right: 0; /* Remove horizontal margin */
+        margin-bottom: 20px; /* Add vertical margin */
+    }
+}

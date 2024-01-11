@@ -1,0 +1,25 @@
+﻿@using SammysBBQ.Data
+
+
+<Carousel ShowControls=false
+          Interval="5000"
+          @bind-SelectedSlide="@slide">
+
+    @for (int i = 0; i < sources.Count(); i++)
+    {
+        string myImgSource = sources[i];
+        string slideIndex = i.ToString();
+
+        <CarouselSlide Name=@slideIndex>
+            <Div Class="single-image-container">
+                <Image Source=@myImgSource />
+            </Div>
+        </CarouselSlide>
+    }
+
+</Carousel>
+
+@code{
+    private string slide = "1";
+    private List<string> sources = ImageController.Instance.SpotlightImages();
+}
