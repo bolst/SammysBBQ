@@ -1,0 +1,12 @@
+﻿@using SammysBBQ.Data
+
+<Row TextAlignment="TextAlignment.Center">
+    <Column ColumnSize="ColumnSize.Is2.OnTablet"></Column>
+    <Column ColumnSize="ColumnSize.Is4.OnTablet.Is12.OnMobile">
+        <Image Source="@FlyerController.Instance.MainFlyer()" Fluid />
+     </Column>
+     <Column ColumnSize="ColumnSize.Is4.OnTablet.Is12.OnMobile">
+         <Image Source="@FlyerController.Instance.CateringFlyer()" Fluid />
+     </Column>
+     <Column ColumnSize="ColumnSize.Is2.OnTablet"></Column>
+ </Row>

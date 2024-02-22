@@ -10,4 +10,15 @@
         margin-right: 0; /* Remove horizontal margin */
         margin-bottom: 20px; /* Add vertical margin */
     }
+
+    .single-image-container {
+        display: flex;
+        height: 20vh;
+        justify-content: center;
+    }
+
+        .single-image-container img {
+            max-height: 95%; /* Keep the image within the container */
+            max-width: 95%; /* Keep the image within the container */
+        }
 }

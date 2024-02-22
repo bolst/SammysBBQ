@@ -3,14 +3,14 @@ namespace SammysBBQ.Data
 {
     public class ImageController : AbstractController<ImageController>
     {
-        public List<string> SpotlightImages()
+        public List<Tuple<string,string>> SpotlightData()
         {
-            return new List<string>()
+            return new List<Tuple<string, string>>()
             {
-                "img/spotlight/ppork_sandwich.jpeg",
-                "img/spotlight/bacon_crackers.jpeg",
-                "img/spotlight/chicken_sausage_app.jpeg",
-                "img/spotlight/steak_tacos.jpeg",
+                new Tuple<string, string>("img/spotlight/ppork_sandwich.jpeg", "Flavor Fiesta"),
+                new Tuple < string, string >("img/spotlight/bacon_crackers.jpeg", "Appetizing Delights"),
+                new Tuple < string, string >("img/spotlight/chicken_sausage_app.jpeg", "Mouthwatering Platters"),
+                new Tuple < string, string >("img/spotlight/steak_tacos.jpeg", "Delicious Food"),
             };
         }
 

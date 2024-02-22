@@ -1,0 +1,11 @@
+﻿<UnorderedListItem 
+    TextColor="TextColor.White" 
+    TextWeight="TextWeight.Bold"
+    TextSize="TextSize.ExtraLarge"
+    Padding="Padding.Is2.FromBottom">
+    @ChildContent
+</UnorderedListItem>
+
+@code{
+    [Parameter] public RenderFragment ChildContent { get; set; }
+}

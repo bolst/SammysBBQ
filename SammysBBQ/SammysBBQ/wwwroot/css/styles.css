@@ -40,14 +40,12 @@
             color: var(--b-theme-info); /* color on hover */
         }
 
-.single-image-container{
+.single-image-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
+    height: 75vh;
 }
 
-    .single-image-container img{
-        max-height: 100%;
-        max-width: 100%;
+    .single-image-container img {
+        max-height: 95%;
+        max-width: 95%;
     }

@@ -1,0 +1,41 @@
+﻿<Blazorise.Link To="@socialLinkDestination" Target="Target.Blank">
+    <Grid Columns="GridColumns.Are12.OnTablet.Are7.OnMobile">
+
+        <Column ColumnSize="ColumnSize.Is5.OnTablet.Is1.OnMobile" TextAlignment="TextAlignment.End">
+            <Figure Size="FigureSize.Is64x64" Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                <FigureImage Source="@socialLogoSource" />
+            </Figure>
+        </Column>
+
+        <Column ColumnSize="ColumnSize.Is1.OnTablet" />
+
+        <Column ColumnSize="ColumnSize.Is2.OnTablet.Is5.OnMobile" TextAlignment="TextAlignment.Center">
+                <Heading TextColor="TextColor.White" Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                    @socialName
+                </Heading>
+        </Column>
+
+        <Column ColumnSize="ColumnSize.Is1.OnTablet" />
+
+    </Grid>
+</Blazorise.Link>
+
+@code{
+
+    #region Parameters
+    [Parameter] public SocialType Type {get; set;} = SocialType.Instagram;
+    #endregion
+
+    private string socialLogoSource = "img/socials/instagram.png";
+    private string socialName = "Instagram";
+    private string socialLinkDestination = "https://www.instagram.com/sammys.q.bbq";
+
+    protected override void OnInitialized()
+    {
+        socialLogoSource = SocialTypeExtensions.Source(Type);
+        socialName = SocialTypeExtensions.Name(Type);
+        socialLinkDestination = SocialTypeExtensions.Link(Type);
+        base.OnInitialized();
+    }
+
+}

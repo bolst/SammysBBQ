@@ -1,3 +1,23 @@
 ﻿@page "/menu"
+@using SammysBBQ.Data
 
-<Heading>Menu</Heading>
+<Row Margin="Margin.IsAuto" RowColumns="RowColumns.Are1">
+    <Column TextAlignment="TextAlignment.Center">
+
+        <MenuImages />
+
+        <MenuHeader>BBQ Menu</MenuHeader>
+
+        <UnorderedList Unstyled Padding="Padding.Is3.FromTop">
+            @foreach(string item in MenuItemController.Instance.BBQMenuItems())
+            {
+                <MenuItem>@item</MenuItem>
+            }
+        </UnorderedList>
+
+
+        <MenuOrderPrompt />
+
+    </Column>
+
+</Row>

@@ -5,11 +5,15 @@
     <LayoutHeader>
         <TopMenu/>
     </LayoutHeader>
-    <LayoutContent Padding="Padding.Is4.OnX">
-        @Body
+    <LayoutContent>
+        <Div ElementId="#b-animate">
+            <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100">
+                @Body
+            </Animate>
+        </Div>
     </LayoutContent>
     <LayoutFooter>
-        <FooterMenu/>
+        <FooterMenu />
     </LayoutFooter>
 </Layout>
 
