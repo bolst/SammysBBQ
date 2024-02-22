@@ -7,8 +7,10 @@ namespace SammysBBQ.Pages.Order
         Instagram, Facebook, Phone
     }
 
+
     public static class SocialTypeExtensions
-    { 
+    {
+        public readonly static string PhoneNumber = "519-991-5596";
         public static string Source(SocialType T)
         {
             switch (T)
@@ -34,13 +36,16 @@ namespace SammysBBQ.Pages.Order
                 case SocialType.Facebook:
                     return "Sam Scala";
                 case SocialType.Phone:
-                    return "(519) 123-4567";
+                    {
+                        string[] phoneNumSplit = PhoneNumber.Split('-');
+                        return $"({phoneNumSplit[0]}) {phoneNumSplit[1]}-{phoneNumSplit[2]}";
+                    }
                 default:
                     return String.Empty;
             }
 
         }
-        
+
         public static string Link(SocialType T)
         {
             switch (T)
@@ -50,7 +55,7 @@ namespace SammysBBQ.Pages.Order
                 case SocialType.Facebook:
                     return "https://www.facebook.com/sam.scala.71";
                 case SocialType.Phone:
-                    return "tel:519-111-1231";
+                    return $"tel:{PhoneNumber}";
                 default:
                     return String.Empty;
             }

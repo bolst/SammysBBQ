@@ -15,7 +15,7 @@ namespace SammysBBQ.Data
                 "Beef",
                 "Chicken",
                 "Beef/Pork Ribs",
-                "Fish",
+                "Fish (Rainbow Trout, Salmon)",
             };
         }
     }

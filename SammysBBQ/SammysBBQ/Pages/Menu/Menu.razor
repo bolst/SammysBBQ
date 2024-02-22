@@ -6,15 +6,23 @@
 
         <MenuImages />
 
-        <MenuHeader>BBQ Menu</MenuHeader>
+        <Jumbotron Width="Width.Is50" Margin="Margin.IsAuto" Background="Background.Dark"
+            Style="box-shadow: var(--b-theme-primary) 0px 2px 12px 0px;">
 
-        <UnorderedList Unstyled Padding="Padding.Is3.FromTop">
-            @foreach(string item in MenuItemController.Instance.BBQMenuItems())
-            {
-                <MenuItem>@item</MenuItem>
-            }
-        </UnorderedList>
+            <JumbotronTitle Size="JumbotronTitleSize.Is1">BBQ Menu</JumbotronTitle>
 
+            <Divider />
+
+            <UnorderedList Unstyled>
+                @foreach (string item in MenuItemController.Instance.BBQMenuItems())
+                {
+                    <UnorderedListItem>
+                        <JumbotronSubtitle>@item</JumbotronSubtitle>
+                    </UnorderedListItem>
+                }
+            </UnorderedList>
+
+        </Jumbotron>
 
         <MenuOrderPrompt />
 
