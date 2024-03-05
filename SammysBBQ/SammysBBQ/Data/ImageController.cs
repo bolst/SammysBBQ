@@ -1,9 +1,11 @@
 ﻿
+using System.Diagnostics;
+
 namespace SammysBBQ.Data
 {
     public class ImageController : AbstractController<ImageController>
     {
-        public List<Tuple<string,string>> SpotlightData()
+        public List<Tuple<string, string>> SpotlightData()
         {
             return new List<Tuple<string, string>>()
             {
@@ -21,6 +23,19 @@ namespace SammysBBQ.Data
             retval += bkg ? ".jpg" : "-nobkg.png";
 
             return retval;
+        }
+
+        public string Square(string s)
+        {
+            string square = s.Replace(".jpg", "-square.jpg");
+            if (File.Exists($"wwwroot/{square}"))
+            {
+                return square;
+            }
+            else
+            {
+                return s;
+            }
         }
     }
 }
