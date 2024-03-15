@@ -1,11 +1,39 @@
-﻿<UnorderedListItem 
-    TextColor="TextColor.White" 
-    TextWeight="TextWeight.Bold"
-    TextSize="TextSize.ExtraLarge"
-    Padding="Padding.Is2.FromBottom">
-    @ChildContent
+﻿@using Blazorise @*idk why warning happens when this line isn't included*@
+@using SammysBBQ.Data
+
+<UnorderedListItem onclick="@ShowInfoModal" style="cursor: pointer">
+    <JumbotronSubtitle>
+        @Content.ItemName
+    </JumbotronSubtitle>
 </UnorderedListItem>
 
-@code{
-    [Parameter] public RenderFragment ChildContent { get; set; }
+<Modal @ref="ModalRef">
+    <ModalContent Centered Background="Background.Dark">
+        <ModalBody>
+            <Row TextAlignment="TextAlignment.End">
+                <Icon Name="IconName.TimesCircle" onclick="@HideInfoModal" style="cursor: pointer" />
+            </Row>
+            @if (Content.ItemImagePath != null)
+            {
+                <Row>
+                    <Image Source="@Content.ItemImagePath" Padding="Padding.Is3" Fluid />
+                </Row>
+            }
+            @if (Content.Description != null)
+            {
+                <Row>
+                    <Paragraph>@Content.Description</Paragraph>
+                </Row>
+            }
+        </ModalBody>
+    </ModalContent>
+</Modal>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public MenuItemContent Content { get; set; }
+
+    private Modal ModalRef;
+    private void ShowInfoModal() { if (Content.ItemImagePath != null || Content.Description != null) ModalRef.Show(); }
+    private void HideInfoModal() { ModalRef.Hide(); }
 }

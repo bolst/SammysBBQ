@@ -34,7 +34,7 @@ namespace SammysBBQ.Pages.Order
                 case SocialType.Instagram:
                     return "@sammys.q.bbq";
                 case SocialType.Facebook:
-                    return "Sam Scala";
+                    return "Sammy's Q";
                 case SocialType.Phone:
                     {
                         string[] phoneNumSplit = PhoneNumber.Split('-');
@@ -53,7 +53,7 @@ namespace SammysBBQ.Pages.Order
                 case SocialType.Instagram:
                     return "https://www.instagram.com/sammys.q.bbq";
                 case SocialType.Facebook:
-                    return "https://www.facebook.com/sam.scala.71";
+                    return "https://www.facebook.com/profile.php?id=61550601187339";
                 case SocialType.Phone:
                     return $"tel:{PhoneNumber}";
                 default:

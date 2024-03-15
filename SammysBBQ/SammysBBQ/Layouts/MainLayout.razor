@@ -3,14 +3,10 @@
 
 <Layout>
     <LayoutHeader>
-        <TopMenu/>
+        <TopMenu />
     </LayoutHeader>
     <LayoutContent>
-        <Div ElementId="#b-animate">
-            <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100">
-                @Body
-            </Animate>
-        </Div>
+        @Body
     </LayoutContent>
     <LayoutFooter>
         <FooterMenu />
@@ -18,7 +14,7 @@
 </Layout>
 
 <style>
-    body{
+    body {
         background-color: var(--b-theme-dark);
     }
 </style>

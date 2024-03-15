@@ -1,27 +1,34 @@
 ﻿@page "/order"
 @using SammysBBQ.Pages.Order.Components
 
-<Jumbotron Width="Width.Is75" Margin="Margin.IsAuto" Background="Background.Dark"
-    Style="box-shadow: var(--b-theme-secondary) 0px 2px 12px 0px;">
+<Div ElementId="#b-animate">
+    <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100">
 
-    <JumbotronSubtitle Padding="Padding.Is4.FromBottom" TextAlignment="TextAlignment.Center">Reach out to us for more
-        information on how we can help make
-        your
-        next event
-        one to remember</JumbotronSubtitle>
+        <Jumbotron Width="Width.Is75" Margin="Margin.IsAuto" Background="Background.Dark"
+            Style="box-shadow: var(--b-theme-secondary) 0px 2px 12px 0px;">
 
-    <Divider />
+            <JumbotronSubtitle Padding="Padding.Is4.FromBottom" TextAlignment="TextAlignment.Center">Reach out to us for
+                more
+                information on how we can help make
+                your
+                next event
+                one to remember</JumbotronSubtitle>
 
-    <SocialLink Type="SocialType.Facebook" />
+            <Divider />
 
-    <Divider />
+            <SocialLink Type="SocialType.Facebook" />
 
-    <SocialLink Type="SocialType.Instagram" />
+            <Divider />
 
-    <Divider />
+            <SocialLink Type="SocialType.Instagram" />
 
-    <SocialLink Type="SocialType.Phone" />
+            <Divider />
 
-</Jumbotron>
+            <SocialLink Type="SocialType.Phone" />
+
+        </Jumbotron>
+
+    </Animate>
+</Div>
 
 &nbsp

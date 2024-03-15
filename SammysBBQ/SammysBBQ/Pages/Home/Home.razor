@@ -2,59 +2,62 @@
 @using SammysBBQ.Data
 @using SammysBBQ.Pages.Home.Components
 
+<Div ElementId="#b-animate">
+    <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
+                style="max-width: 100%!important; height: auto; overflow: hidden!important;">
+        <Div Class="spotlight-container"
+            Padding="Padding.Is4.FromBottom"
+            Border="Border.Rounded"
+            Display="Display.None.Block.OnFullHD">
+                <Spotlight />
+        </Div>
 
-<Div Class="spotlight-container"
-     Padding="Padding.Is4.FromBottom"
-     Border="Border.Rounded"
-     Display="Display.None.Block.OnFullHD">
-        <Spotlight />
-</Div>
 
+        <Grid Columns="GridColumns.Are12.OnTablet.Are8.OnMobile" ElementId="#b-animater">
+            <Column ColumnSize="ColumnSize.Is8">
+                    <Jumbotron Background="Background.Info" Margin="Margin.Is4.OnY" Style="box-shadow: var(--b-theme-primary) 0px 0px 5px 0px;">
+                        <DisplayHeading Size="DisplayHeadingSize.Is4"
+                                        TextWeight="TextWeight.Bold"
+                                        TextColor="TextColor.Primary">
+                            Delivering Perfection
+                        </DisplayHeading>
+                        <JumbotronSubtitle TextWeight="TextWeight.Normal">
+                        From corporate gatherings and weddings to backyard bashes and upscale soirées, Sammy's Q adapts to any occasion. Our diverse menu caters to all tastes, offering a tantalizing array of grilled delights, sides, and desserts that promise to satisfy every palate.
+                        </JumbotronSubtitle>
+                    <Button 
+                        Size="Size.ExtraLarge"
+                            Color="Color.Primary"
+                            TextWeight="TextWeight.Bold"
+                            Type="ButtonType.Link"
+                            To="/menu">
+                        CHECK OUT OUR MENU <Icon Name="IconName.ArrowRight" />
+                    </Button>
+                    </Jumbotron>
+            </Column>
+            <Column ColumnSize="ColumnSize.Is2.OnTablet.Is4.OnMobile">
+                <Card Position="Position.Relative.Top.Is50.Start.Is50.Translate.Middle" Background="Background.Dark">
+                    <CardImage Source="@ImageController.Instance.Square(ImageSources.SteakTacos)" Border="Border.Rounded" Fluid/>
+                </Card>
+            </Column>    
+            <Column ColumnSize="ColumnSize.Is2.OnTablet.Is4.OnMobile">
+                <Card Position="Position.Relative.Top.Is50.Start.Is50.Translate.Middle" Background="Background.Dark">
+                    <CardImage Source="@ImageController.Instance.Square(ImageSources.PulledLambCut1)" Border="Border.Rounded" Fluid/>
+                </Card>
+            </Column>
+        </Grid>
 
-<Grid Columns="GridColumns.Are12.OnTablet.Are8.OnMobile" ElementId="#b-animater">
-    <Column ColumnSize="ColumnSize.Is8">
-            <Jumbotron Background="Background.Info" Margin="Margin.Is4.OnY" Style="box-shadow: var(--b-theme-primary) 0px 0px 5px 0px;">
-                <DisplayHeading Size="DisplayHeadingSize.Is4"
-                                TextWeight="TextWeight.Bold"
-                                TextColor="TextColor.Primary">
-                    Delivering Perfection
-                </DisplayHeading>
-                <JumbotronSubtitle TextWeight="TextWeight.Normal">
-                From corporate gatherings and weddings to backyard bashes and upscale soirées, Sammy's Q adapts to any occasion. Our diverse menu caters to all tastes, offering a tantalizing array of grilled delights, sides, and desserts that promise to satisfy every palate.
-                </JumbotronSubtitle>
+        <Flyers />
+
+        <Div TextAlignment="TextAlignment.Center" Padding="Padding.Is5.FromTop.Is5.FromBottom">
             <Button 
+                Color="Color.Primary" 
+                TextWeight="TextWeight.Bold"
                 Size="Size.ExtraLarge"
-                    Color="Color.Primary"
-                    TextWeight="TextWeight.Bold"
-                    Type="ButtonType.Link"
-                    To="/menu">
-                CHECK OUT OUR MENU <Icon Name="IconName.ArrowRight" />
-            </Button>
-            </Jumbotron>
-    </Column>
-    <Column ColumnSize="ColumnSize.Is2.OnTablet.Is4.OnMobile">
-        <Card Position="Position.Relative.Top.Is50.Start.Is50.Translate.Middle" Background="Background.Dark">
-            <CardImage Source="@ImageController.Instance.Square(ImageSources.SteakTacos)" Border="Border.Rounded" Fluid/>
-        </Card>
-    </Column>    
-    <Column ColumnSize="ColumnSize.Is2.OnTablet.Is4.OnMobile">
-        <Card Position="Position.Relative.Top.Is50.Start.Is50.Translate.Middle" Background="Background.Dark">
-            <CardImage Source="@ImageController.Instance.Square(ImageSources.PulledLambCut1)" Border="Border.Rounded" Fluid/>
-        </Card>
-    </Column>
-</Grid>
-
-<Flyers />
-
-<Div TextAlignment="TextAlignment.Center" Padding="Padding.Is5.FromTop.Is5.FromBottom">
-    <Button 
-        Color="Color.Primary" 
-        TextWeight="TextWeight.Bold"
-        Size="Size.ExtraLarge"
-        Type="ButtonType.Link"
-        To="/order">ORDER NOW</Button>
+                Type="ButtonType.Link"
+                To="/order">ORDER NOW</Button>
+        </Div>
+    </Animate>
 </Div>
-
 
 <style>
     .spotlight-container {

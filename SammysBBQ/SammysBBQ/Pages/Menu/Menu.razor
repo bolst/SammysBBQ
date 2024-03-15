@@ -1,31 +1,36 @@
 ﻿@page "/menu"
 @using SammysBBQ.Data
 
-<Row Margin="Margin.IsAuto" RowColumns="RowColumns.Are1">
-    <Column TextAlignment="TextAlignment.Center">
+<Div ElementId="#b-animate">
+    <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
+        style="max-width: 100%!important; height: auto; overflow: hidden!important;">
 
-        <MenuImages />
+        <Row Margin="Margin.IsAuto" RowColumns="RowColumns.Are1">
+            <Column TextAlignment="TextAlignment.Center">
 
-        <Jumbotron Width="Width.Is75" Margin="Margin.IsAuto" Background="Background.Dark"
-            Style="box-shadow: var(--b-theme-primary) 0px 2px 12px 0px;">
+                <MenuImages />
 
-            <JumbotronTitle Size="JumbotronTitleSize.Is1">BBQ Menu</JumbotronTitle>
+                <Jumbotron Width="Width.Is75" Margin="Margin.IsAuto" Background="Background.Dark"
+                    Style="box-shadow: var(--b-theme-primary) 0px 2px 12px 0px;">
 
-            <Divider />
+                    <JumbotronTitle Size="JumbotronTitleSize.Is1">BBQ Menu</JumbotronTitle>
 
-            <UnorderedList Unstyled>
-                @foreach (string item in MenuItemController.Instance.BBQMenuItems())
-                {
-                    <UnorderedListItem>
-                        <JumbotronSubtitle>@item</JumbotronSubtitle>
-                    </UnorderedListItem>
-                }
-            </UnorderedList>
+                    <Divider />
 
-        </Jumbotron>
+                    <UnorderedList Unstyled>
+                        @foreach (MenuItemContent item in MenuItemController.Instance.BBQMenuItems())
+                        {
+                            <MenuItem Content="@item" />
+                        }
+                    </UnorderedList>
 
-        <MenuOrderPrompt />
+                </Jumbotron>
 
-    </Column>
+                <MenuOrderPrompt />
 
-</Row>
+            </Column>
+
+        </Row>
+
+    </Animate>
+</Div>
