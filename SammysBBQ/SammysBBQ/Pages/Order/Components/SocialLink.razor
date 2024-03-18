@@ -5,7 +5,7 @@
             <Figure Size="FigureSize.Is64x64" Position="Position.Relative.Top.Is50.Translate.MiddleY">
                 <FigureImage Source="@socialLogoSource" />
             </Figure>
-        </Column> 
+        </Column>
 
         <Column ColumnSize="ColumnSize.Is1.OnMobile" />
 
@@ -31,12 +31,11 @@
     private string socialName = "Instagram";
     private string socialLinkDestination = "https://www.instagram.com/sammys.q.bbq";
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         socialLogoSource = SocialTypeExtensions.Source(Type);
-        socialName = SocialTypeExtensions.Name(Type);
-        socialLinkDestination = SocialTypeExtensions.Link(Type);
-        base.OnInitialized();
+        socialName = await SocialTypeExtensions.Name(Type);
+        socialLinkDestination = await SocialTypeExtensions.Link(Type);
     }
 
 }

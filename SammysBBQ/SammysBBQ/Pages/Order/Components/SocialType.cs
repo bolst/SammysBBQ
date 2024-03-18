@@ -1,16 +1,20 @@
 ﻿using SammysBBQ.Data;
+using System.Text.Json;
 
 namespace SammysBBQ.Pages.Order
 {
     public enum SocialType
     {
-        Instagram, Facebook, Phone
+        Instagram, Facebook, Phone, Email
     }
 
 
     public static class SocialTypeExtensions
     {
         public readonly static string PhoneNumber = "519-991-5596";
+
+
+
         public static string Source(SocialType T)
         {
             switch (T)
@@ -27,38 +31,65 @@ namespace SammysBBQ.Pages.Order
 
         }
 
-        public static string Name(SocialType T)
+        public static async Task<string?> Name(SocialType T)
         {
+            string key = "";
             switch (T)
             {
                 case SocialType.Instagram:
-                    return "@sammys.q.bbq";
+                    key = "instagram";
+                    break;
                 case SocialType.Facebook:
-                    return "Sammy's Q";
+                    key = "facebook";
+                    break;
                 case SocialType.Phone:
-                    {
-                        string[] phoneNumSplit = PhoneNumber.Split('-');
-                        return $"({phoneNumSplit[0]}) {phoneNumSplit[1]}-{phoneNumSplit[2]}";
-                    }
+                    key = "phone";
+                    break;
                 default:
                     return String.Empty;
             }
+
+            JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "order", "socials", key });
+
+            if (data == null)
+            {
+                return null;
+            }
+
+
+            return data.RootElement.GetProperty("data").GetProperty("handle").ToString();
 
         }
 
-        public static string Link(SocialType T)
+        public static async Task<string?> Link(SocialType T)
         {
+
+            string key = "";
             switch (T)
             {
                 case SocialType.Instagram:
-                    return "https://www.instagram.com/sammys.q.bbq";
+                    key = "instagram";
+                    break;
                 case SocialType.Facebook:
-                    return "https://www.facebook.com/profile.php?id=61550601187339";
+                    key = "facebook";
+                    break;
                 case SocialType.Phone:
-                    return $"tel:{PhoneNumber}";
+                    key = "phone";
+                    break;
                 default:
                     return String.Empty;
             }
+
+            JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "order", "socials", key });
+
+            if (data == null)
+            {
+                return null;
+            }
+
+
+            return data.RootElement.GetProperty("data").GetProperty("link").ToString();
+
 
         }
     }

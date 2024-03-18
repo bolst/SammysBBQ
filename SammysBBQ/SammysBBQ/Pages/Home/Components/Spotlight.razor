@@ -26,14 +26,11 @@
 
     protected override async Task OnInitializedAsync()
     {
-        JsonDocument? data;
+        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "spotlight" });
 
+        if (data != null)
         {
-            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "spotlight", "text" });
-            if (data != null)
-            {
-                SpotlightText = data.RootElement.GetProperty("data").ToString();
-            }
+            SpotlightText = data.RootElement.GetProperty("text").GetProperty("data").ToString();
         }
 
     }

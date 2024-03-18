@@ -38,28 +38,13 @@
 
     protected override async Task OnInitializedAsync()
     {
-        JsonDocument? data;
+        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo"});
         
+        if (data != null)
         {
-            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "title" });
-            if (data != null)
-            {
-                Title = data.RootElement.GetProperty("data").ToString();
-            }
-        }
-        {
-            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "description" });
-            if (data != null)
-            {
-                Description = data.RootElement.GetProperty("data").ToString();
-            }
-        }
-        {
-            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "button text" });
-            if (data != null)
-            {
-                ButtonText = data.RootElement.GetProperty("data").ToString();
-            }
+            Title = data.RootElement.GetProperty("title").GetProperty("data").ToString();
+            Description = data.RootElement.GetProperty("description").GetProperty("data").ToString();
+            ButtonText = data.RootElement.GetProperty("button text").GetProperty("data").ToString();
         }
     }
 
