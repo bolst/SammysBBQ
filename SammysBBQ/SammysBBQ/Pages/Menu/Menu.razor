@@ -18,7 +18,7 @@
                     <Divider />
 
                     <UnorderedList Unstyled>
-                        @foreach (MenuItemContent item in MenuItemController.Instance.BBQMenuItems())
+                        @foreach (MenuItemContent item in MenuItemFactory.Instance.BBQMenuItems())
                         {
                             <MenuItem Content="@item" />
                         }

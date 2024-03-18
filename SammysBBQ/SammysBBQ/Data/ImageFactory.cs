@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace SammysBBQ.Data
 {
-    public class ImageController : AbstractController<ImageController>
+    public class ImageFactory : AbsSingleton<ImageFactory>
     {
         public List<Tuple<string, string>> SpotlightData()
         {

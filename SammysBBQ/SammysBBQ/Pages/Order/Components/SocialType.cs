@@ -22,7 +22,7 @@ namespace SammysBBQ.Pages.Order
                 case SocialType.Phone:
                     return "img/socials/phone.png";
                 default:
-                    return ImageController.Instance.Logo(false);
+                    return ImageFactory.Instance.Logo(false);
             }
 
         }

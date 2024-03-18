@@ -3,7 +3,7 @@ using SammysBBQ.Pages.Menu;
 
 namespace SammysBBQ.Data
 {
-    public class MenuItemController : AbstractController<MenuItemController>
+    public class MenuItemFactory : AbsSingleton<MenuItemFactory>
     {
         public List<MenuItemContent> BBQMenuItems()
         {
