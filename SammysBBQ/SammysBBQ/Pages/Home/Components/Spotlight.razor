@@ -1,4 +1,5 @@
 ﻿@using SammysBBQ.Data
+@using System.Text.Json;
 
 <Div Style="display: flex; align-items: center;" Position="Position.Relative.Top.Is50.Translate.MiddleY">
     <Column ColumnSize="ColumnSize.Is2"></Column>
@@ -6,7 +7,7 @@
     <Column ColumnSize="ColumnSize.Is6" TextAlignment="TextAlignment.Center">
 
         <DisplayHeading Size="DisplayHeadingSize.Is3" TextColor="TextColor.White" TextWeight="TextWeight.Bold"
-            Padding="Padding.Is4.FromStart">Craving something yummy?<br />You've come to the right place
+            Padding="Padding.Is4.FromStart">@SpotlightText
         </DisplayHeading>
 
     </Column>
@@ -19,3 +20,17 @@
 
     <Column ColumnSize="ColumnSize.Is1"></Column>
 </Div>
+
+@code {
+
+    private string SpotlightText = "Craving something yummy?\nYou've come to the right place";
+
+    protected override async Task OnInitializedAsync()
+    {
+        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "spotlight", "text" });
+        if (data != null)
+        {
+            SpotlightText = data.RootElement.GetProperty("data").ToString();
+        }
+    }
+}
