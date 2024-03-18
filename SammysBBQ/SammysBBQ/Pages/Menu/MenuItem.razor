@@ -34,6 +34,10 @@
     [Parameter] public MenuItemContent Content { get; set; }
 
     private Modal ModalRef;
-    private void ShowInfoModal() { if (Content.ItemImagePath != null || Content.Description != null) ModalRef.Show(); }
+    private void ShowInfoModal()
+    {
+        if (!String.IsNullOrEmpty(Content.ItemImagePath) || !String.IsNullOrEmpty(Content.Description))
+            ModalRef.Show();
+    }
     private void HideInfoModal() { ModalRef.Hide(); }
 }

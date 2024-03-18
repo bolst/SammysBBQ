@@ -1,5 +1,4 @@
 @using SammysBBQ.Data
-@using System.Text.Json;
 
 
 <Grid Columns="GridColumns.Are12.OnTablet.Are8.OnMobile" ElementId="#b-animater">
@@ -39,22 +38,28 @@
 
     protected override async Task OnInitializedAsync()
     {
-        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "title" });
-        if (data != null)
+        JsonDocument? data;
+        
         {
-            Title = data.RootElement.GetProperty("data").ToString();
+            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "title" });
+            if (data != null)
+            {
+                Title = data.RootElement.GetProperty("data").ToString();
+            }
         }
-
-        data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "description" });
-        if (data != null)
         {
-            Description = data.RootElement.GetProperty("data").ToString();
+            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "description" });
+            if (data != null)
+            {
+                Description = data.RootElement.GetProperty("data").ToString();
+            }
         }
-
-        data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "button text" });
-        if (data != null)
         {
-            ButtonText = data.RootElement.GetProperty("data").ToString();
+            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "card picture combo", "button text" });
+            if (data != null)
+            {
+                ButtonText = data.RootElement.GetProperty("data").ToString();
+            }
         }
     }
 

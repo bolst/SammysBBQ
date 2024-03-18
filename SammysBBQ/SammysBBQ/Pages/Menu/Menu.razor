@@ -13,12 +13,12 @@
                 <Jumbotron Width="Width.Is75" Margin="Margin.IsAuto" Background="Background.Dark"
                     Style="box-shadow: var(--b-theme-primary) 0px 2px 12px 0px;">
 
-                    <JumbotronTitle Size="JumbotronTitleSize.Is1">BBQ Menu</JumbotronTitle>
+                    <JumbotronTitle Size="JumbotronTitleSize.Is1">@MenuTitle</JumbotronTitle>
 
                     <Divider />
 
                     <UnorderedList Unstyled>
-                        @foreach (MenuItemContent item in MenuItemFactory.Instance.BBQMenuItems())
+                        @foreach (MenuItemContent item in MenuItemContents)
                         {
                             <MenuItem Content="@item" />
                         }
@@ -34,3 +34,29 @@
 
     </Animate>
 </Div>
+
+@code {
+
+    private string MenuTitle = "BBQ Menu";
+    private List<MenuItemContent> MenuItemContents = MenuItemFactory.Instance.DefaultBBQMenuItems();
+
+    protected override async Task OnInitializedAsync()
+    {
+        JsonDocument? data;
+        {
+            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "menu", "bbq menu", "title" });
+            if (data != null)
+            {
+                MenuTitle = data.RootElement.GetProperty("data").ToString();
+            }
+        }
+        {
+            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "menu", "bbq menu", "items" });
+            if (data != null)
+            {
+                var d = data.RootElement.GetProperty("data");
+                MenuItemContents = JsonSerializer.Deserialize<List<MenuItemContent>>(d);
+            }
+        }
+    }
+}

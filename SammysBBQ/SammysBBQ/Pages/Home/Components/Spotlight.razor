@@ -1,5 +1,4 @@
 ﻿@using SammysBBQ.Data
-@using System.Text.Json;
 
 <Div Style="display: flex; align-items: center;" Position="Position.Relative.Top.Is50.Translate.MiddleY">
     <Column ColumnSize="ColumnSize.Is2"></Column>
@@ -27,10 +26,15 @@
 
     protected override async Task OnInitializedAsync()
     {
-        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "spotlight", "text" });
-        if (data != null)
+        JsonDocument? data;
+
         {
-            SpotlightText = data.RootElement.GetProperty("data").ToString();
+            data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "home", "spotlight", "text" });
+            if (data != null)
+            {
+                SpotlightText = data.RootElement.GetProperty("data").ToString();
+            }
         }
+
     }
 }
