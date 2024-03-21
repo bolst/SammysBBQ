@@ -1,50 +1,47 @@
 @page "/accessories"
 @using SammysBBQ.Data
+@using SammysBBQ.Pages.Accessories.Components
+@inject IJSRuntime JSRuntime
 
 <Div ElementId="#b-animate">
     <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
         style="max-width: 100%!important; height: auto; overflow: hidden!important;">
-        <Paragraph TextColor="TextColor.White">
-            I distribute
-        </Paragraph>
 
-        <a href="https://www.instagram.com/reel/C4jlxpAugNS/" target="blank"><Text TextColor="TextColor.Light">Bogline
-                Bush Coal Premium Charcoal</Text></a>
+        <AccessoryHeader />
 
         <br>
+        <br>
 
-        <a href="https://www.mattswood.online/" target="blank"><Text TextColor="TextColor.Light">Matt's Smokin' Firewood
-                - Premium
-                Smoking Wood</Text></a>
+        <AccessoryModule Title="Bog Line Bush Coal" HeaderIconName="IconName.Fire">
+            <CoalContent />
+        </AccessoryModule>
 
-        <Grid>
-            <Column ColumnSize="ColumnSize.Is2">
-                <Image Source="@ImageSources.BushCoal" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is2">
-                <Image Source="@ImageSources.BushCoalCloseup" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is2">
-                <Image Source="@ImageSources.CoalWoodGroup" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is2">
-                <Image Source="@ImageSources.WoodCloseup1" Fluid />
-            </Column>
-        </Grid>
+        <br>
+        <br>
 
-        <br><br>
-
-        <Grid>
-            <Column ColumnSize="ColumnSize.Is2">
-                <Image Source="@ImageSources.WoodBagged1" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is2">
-                <Image Source="@ImageSources.WoodBagged2" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is2">
-                <Image Source="@ImageSources.WoodCloseup2" Fluid />
-            </Column>
-        </Grid>
+        <AccessoryModule Title="Matt's Smokin' Firewood - Premium Smoking Wood" HeaderIconName="IconName.Bars">
+            <WoodContent />
+        </AccessoryModule>
 
     </Animate>
 </Div>
+
+<br>
+
+@code {
+    private bool IsMobile { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            IsMobile = await JSRuntime.InvokeAsync<bool>("isDevice");
+        }
+        catch (JSDisconnectedException exc)
+        {
+            Console.WriteLine("Warning: JS DISCONNET");
+            Console.WriteLine(exc.StackTrace);
+            IsMobile = false;
+        }
+    }
+}

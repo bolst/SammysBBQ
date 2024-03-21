@@ -1,0 +1,87 @@
+@using SammysBBQ.Data
+@inject IJSRuntime JSRuntime
+
+
+<Grid Margin="Margin.IsAuto">
+    <Column ColumnSize="ColumnSize.Is1"></Column>
+    @if (IsMobile)
+    {
+        <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @CoalDescription
+                <a href="https://www.instagram.com/reel/C4jlxpAugNS/" target="blank"><Text TextColor="TextColor.Light">Bog
+                        Line
+                        Bush Coal Premium Charcoal</Text></a>
+                <br>
+                <br>
+                @CoalImage1
+                <br>
+                <br>
+                @CoalImage2
+            </Div>
+        </Column>
+    }
+    else
+    {
+        <Column ColumnSize="ColumnSize.Is6">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @CoalDescription
+                <a href="https://www.instagram.com/reel/C4jlxpAugNS/" target="blank"><Text TextColor="TextColor.Light">Bog
+                        Line
+                        Bush Coal Premium Charcoal</Text></a>
+            </Div>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @CoalImage1
+            </Div>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @CoalImage2
+            </Div>
+        </Column>
+    }
+    <Column ColumnSize="ColumnSize.Is1"></Column>
+</Grid>
+
+@code {
+    private RenderFragment CoalDescription = @<Paragraph TextSize="TextSize.Large" TextColor="TextColor.Light">
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+        Coal Description
+    </Paragraph>;
+    private RenderFragment CoalImage1 = @<Image Source="@ImageSources.BushCoal" Fluid />;
+    private RenderFragment CoalImage2 = @<Image Source="@ImageSources.BushCoalCloseup" Fluid />;
+
+    private bool IsMobile = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            IsMobile = await JSRuntime.InvokeAsync<bool>("isDevice");
+        }
+        catch (JSDisconnectedException exc)
+        {
+            Console.WriteLine("Warning: JS DISCONNET");
+            Console.WriteLine(exc.StackTrace);
+            IsMobile = false;
+        }
+    }
+}

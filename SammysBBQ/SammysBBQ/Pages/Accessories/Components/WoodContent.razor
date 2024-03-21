@@ -1,0 +1,107 @@
+@using SammysBBQ.Data
+@inject IJSRuntime JSRuntime
+
+<Grid Margin="Margin.IsAuto">
+    <Column ColumnSize="ColumnSize.Is1"></Column>
+    @if (IsMobile)
+    {
+        <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @WoodDescription
+                <a href="https://www.mattswood.online/" target="blank"><Text TextColor="TextColor.Light">Matt's
+                        Smokin' Firewood
+                        - Premium
+                        Smoking Wood</Text></a>
+                <br>
+                <br>
+                @WoodImage1
+                <br>
+                <br>
+                @WoodImage2
+                <br>
+                <br>
+                @WoodImage3
+                <br>
+                <br>
+                @WoodImage4
+            </Div>
+        </Column>
+    }
+    else
+    {
+        <Column ColumnSize="ColumnSize.Is5">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @WoodDescription
+                <a href="https://www.mattswood.online/" target="blank"><Text TextColor="TextColor.Light">Matt's
+                        Smokin' Firewood
+                        - Premium
+                        Smoking Wood</Text></a>
+            </Div>
+        </Column>
+
+        <Column ColumnSize="ColumnSize.Is2">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @WoodImage1
+            </Div>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @WoodImage2
+            </Div>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is2">
+            <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                @WoodImage3
+
+                <br>
+                <br>
+
+                @WoodImage4
+            </Div>
+        </Column>
+    }
+    <Column ColumnSize="ColumnSize.Is1"></Column>
+</Grid>
+
+@code {
+    private RenderFragment WoodDescription = @<Paragraph TextSize="TextSize.Large" TextColor="TextColor.Light">
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+        Wood Description
+    </Paragraph>;
+    private RenderFragment WoodImage1 = @<Image Source="@ImageSources.WoodBagged1" Fluid />;
+    private RenderFragment WoodImage2 = @<Image Source="@ImageSources.WoodBagged2" Fluid />;
+    private RenderFragment WoodImage3 = @<Image Source="@ImageSources.WoodCloseup1" Fluid />;
+    private RenderFragment WoodImage4 = @<Image Source="@ImageSources.WoodCloseup2" Fluid />;
+
+    private bool IsMobile = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            IsMobile = await JSRuntime.InvokeAsync<bool>("isDevice");
+        }
+        catch (JSDisconnectedException exc)
+        {
+            Console.WriteLine("Warning: JS DISCONNET");
+            Console.WriteLine(exc.StackTrace);
+            IsMobile = false;
+        }
+    }
+}
