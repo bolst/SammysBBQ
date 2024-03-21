@@ -15,10 +15,10 @@
             @if (IsMobile)
             {
                 <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center" Margin="Margin.IsAuto">
-                    <PitHeading>Allo mate</PitHeading>
-                    <PitParagraph>500 Gallon Trailered Offset Smoker (built by Bog Line BBQ)</PitParagraph>
-                    <PitImage Source="@ImageSources.BBQSideView">
-                        <Lead TextColor="TextColor.Light">Bog Line BBQ - 500 Gallon Trailered Offset Smoker</Lead>
+                    <PitHeading>@Title1</PitHeading>
+                    <PitParagraph>@Paragraph1</PitParagraph>
+                    <PitImage Source="@ImageSource1">
+                        <Lead TextColor="TextColor.Light">@ImageCaption1</Lead>
                     </PitImage>
                 </Column>
             }
@@ -26,13 +26,13 @@
             {
                 <Column ColumnSize="ColumnSize.Is6" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                        <PitHeading>Allo mate</PitHeading>
-                        <PitParagraph>500 Gallon Trailered Offset Smoker (built by Bog Line BBQ)</PitParagraph>
+                        <PitHeading>@Title1</PitHeading>
+                        <PitParagraph>@Paragraph1</PitParagraph>
                     </Div>
                 </Column>
                 <Column ColumnSize="ColumnSize.Is4">
-                    <PitImage Source="@ImageSources.BBQSideView">
-                        <Lead TextColor="TextColor.Light">Bog Line BBQ - 500 Gallon Trailered Offset Smoker</Lead>
+                    <PitImage Source="@ImageSource1">
+                        <Lead TextColor="TextColor.Light">@ImageCaption1</Lead>
                     </PitImage>
                 </Column>
             }
@@ -45,39 +45,21 @@
             @if (IsMobile)
             {
                 <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
-                    <PitImage Source="@ImageSources.BBQLogo" />
+                    <PitImage Source="@ImageSource2" />
                     <br>
-                    <PitHeading>Another Header</PitHeading>
-                    <PitParagraph>Bunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
-                        of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
-                        wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
-                        other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
-                        of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
-                        wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
-                        other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
-                        of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
-                        wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
-                        other wordsBunch of other wordsBunch of other wordsBunch of other words</PitParagraph>
+                    <PitHeading>@Title2</PitHeading>
+                    <PitParagraph>@Paragraph2</PitParagraph>
                 </Column>
             }
             else
             {
                 <Column ColumnSize="ColumnSize.Is3">
-                    <PitImage Source="@ImageSources.BBQLogo" />
+                    <PitImage Source="@ImageSource2" />
                 </Column>
                 <Column ColumnSize="ColumnSize.Is7" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                        <PitHeading>Another Header</PitHeading>
-                        <PitParagraph>Bunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
-                            of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
-                            wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
-                            other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
-                            of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
-                            wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
-                            other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
-                            of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
-                            wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
-                            other wordsBunch of other wordsBunch of other wordsBunch of other words</PitParagraph>
+                        <PitHeading>@Title2</PitHeading>
+                        <PitParagraph>@Paragraph2</PitParagraph>
                     </Div>
                 </Column>
             }
@@ -92,28 +74,28 @@
             @if (IsMobile)
             {
                 <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
-                    <PitImage Source="@ImageSources.BBQOutsideDay" />
+                    <PitImage Source="@ImageSource3_1" />
                     <br>
-                    <PitImage Source="@ImageSources.BBQTopView" />
+                    <PitImage Source="@ImageSource3_2" />
                     <br>
-                    <PitImage Source="@ImageSources.BBQOutsideNight" />
+                    <PitImage Source="@ImageSource3_3" />
                 </Column>
             }
             else
             {
                 <Column ColumnSize="ColumnSize.Is3" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                        <PitImage Source="@ImageSources.BBQOutsideDay" />
+                        <PitImage Source="@ImageSource3_1" />
                     </Div>
                 </Column>
                 <Column ColumnSize="ColumnSize.Is5" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                        <PitImage Source="@ImageSources.BBQTopView" />
+                        <PitImage Source="@ImageSource3_2" />
                     </Div>
                 </Column>
                 <Column ColumnSize="ColumnSize.Is2" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                        <PitImage Source="@ImageSources.BBQOutsideNight" />
+                        <PitImage Source="@ImageSource3_3" />
                     </Div>
                 </Column>
             }
@@ -124,8 +106,23 @@
 </Div>
 
 @code {
-    private bool IsMobile { get; set; } = false;
 
+    private string Title1 = "Title 1";
+    private string Paragraph1 = "500 Gallon Trailered Offset Smoker (built by Bog Line BBQ)";
+    private string ImageSource1 = ImageSources.BBQSideView;
+    private string ImageCaption1 = "Bog Line BBQ - 500 Gallon Trailered Offset Smoker";
+    
+    private string Title2 = "Another Header";
+    private string Paragraph2 = "Bunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other words";
+    private string ImageSource2 = ImageSources.BBQLogo;
+    private string ImageCaption2 = "";
+
+
+    private string ImageSource3_1 = ImageSources.BBQOutsideDay;
+    private string ImageSource3_2 = ImageSources.BBQTopView;
+    private string ImageSource3_3 = ImageSources.BBQOutsideNight;
+
+    private bool IsMobile { get; set; } = false;
     protected override async Task OnInitializedAsync()
     {
         try
@@ -137,6 +134,25 @@
             Console.WriteLine("Warning: JS DISCONNET");
             Console.WriteLine(exc.StackTrace);
             IsMobile = false;
+        }
+
+        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "pit" });
+
+        if (data != null)
+        {
+            Title1 = data.RootElement.GetProperty("Blurb 1").GetProperty("title").GetProperty("data").ToString();
+            Paragraph1 = data.RootElement.GetProperty("Blurb 1").GetProperty("paragraph").GetProperty("data").ToString();
+            ImageSource1 = data.RootElement.GetProperty("Blurb 1").GetProperty("image").GetProperty("data").ToString();
+            ImageCaption1 = data.RootElement.GetProperty("Blurb 1").GetProperty("image caption").GetProperty("data").ToString();
+
+            Title2 = data.RootElement.GetProperty("Blurb 2").GetProperty("title").GetProperty("data").ToString();
+            Paragraph2 = data.RootElement.GetProperty("Blurb 2").GetProperty("paragraph").GetProperty("data").ToString();
+            ImageSource2 = data.RootElement.GetProperty("Blurb 2").GetProperty("image").GetProperty("data").ToString();
+            ImageCaption2 = data.RootElement.GetProperty("Blurb 2").GetProperty("image caption").GetProperty("data").ToString();
+
+            ImageSource3_1 = data.RootElement.GetProperty("Image Triplet").GetProperty("image 1").GetProperty("data").ToString();
+            ImageSource3_2 = data.RootElement.GetProperty("Image Triplet").GetProperty("image 2").GetProperty("data").ToString();
+            ImageSource3_3 = data.RootElement.GetProperty("Image Triplet").GetProperty("image 3").GetProperty("data").ToString();
         }
     }
 }
