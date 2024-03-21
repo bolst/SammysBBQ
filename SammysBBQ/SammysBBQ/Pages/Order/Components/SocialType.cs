@@ -12,6 +12,7 @@ namespace SammysBBQ.Pages.Order
     public static class SocialTypeExtensions
     {
         public readonly static string PhoneNumber = "519-991-5596";
+        public readonly static string Email = "sammys.q.bbq@gmail.com";
 
 
 
@@ -25,6 +26,8 @@ namespace SammysBBQ.Pages.Order
                     return "img/socials/facebook.png";
                 case SocialType.Phone:
                     return "img/socials/phone.png";
+                case SocialType.Email:
+                    return "img/socials/gmail.png";
                 default:
                     return ImageFactory.Instance.Logo(false);
             }
@@ -33,63 +36,48 @@ namespace SammysBBQ.Pages.Order
 
         public static async Task<string?> Name(SocialType T)
         {
-            string key = "";
             switch (T)
             {
                 case SocialType.Instagram:
-                    key = "instagram";
+                    return "@sammys.q.bbq";
                     break;
                 case SocialType.Facebook:
-                    key = "facebook";
+                    return "Sammy's Q";
                     break;
                 case SocialType.Phone:
-                    key = "phone";
-                    break;
+                    {
+                        string[] phoneNumSplit = PhoneNumber.Split('-');
+                        return $"({phoneNumSplit[0]}) {phoneNumSplit[1]}-{phoneNumSplit[2]}";
+                    }
+                case SocialType.Email:
+                    return Email;
                 default:
                     return String.Empty;
             }
-
-            JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "order", "socials", key });
-
-            if (data == null)
-            {
-                return null;
-            }
-
-
-            return data.RootElement.GetProperty("data").GetProperty("handle").ToString();
-
         }
 
         public static async Task<string?> Link(SocialType T)
         {
-
-            string key = "";
             switch (T)
             {
                 case SocialType.Instagram:
-                    key = "instagram";
+                    return "https://www.instagram.com/sammys.q.bbq";
                     break;
                 case SocialType.Facebook:
-                    key = "facebook";
+                    return "https://www.facebook.com/profile.php?id=61550601187339";
                     break;
                 case SocialType.Phone:
-                    key = "phone";
+                    return $"tel:{PhoneNumber}";
                     break;
+                case SocialType.Email:
+                    {
+                        string subject = "";
+                        string body = "";
+                        return $"mailto:Sammy's%20Q<{Email}>?subject={subject}&body={body}";
+                    }
                 default:
                     return String.Empty;
             }
-
-            JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "order", "socials", key });
-
-            if (data == null)
-            {
-                return null;
-            }
-
-
-            return data.RootElement.GetProperty("data").GetProperty("link").ToString();
-
 
         }
     }

@@ -23,5 +23,22 @@ namespace SammysBBQ.Data
         public const string SteakTacos = "img/steak-tacos.jpg";
         public const string ChickenWings = "img/chicken-wings.jpg";
         public const string PulledLambBBQ = "img/pulled-lamb-bbq.jpg";
+        public const string Sausages = "img/sausages.jpg";
+        public const string PulledPorkSandwich = "img/pulled-pork-sandwich.jpg";
+        public const string Chicken = "img/chicken.jpg";
+        public const string Brisket = "img/brisket.jpg";
+        public const string BrisketVideo = "img/brisket-video.jpg";
+        public const string SammyWolfhead = "img/sammy-wolfhead.jpg";
+        public const string BBQOutsideDay = "img/bbq-outside-day.jpg";
+        public const string BBQFire = "img/bbq-fire.mp4";
+        public const string BBQOutsideNight = "img/bbq-outside-night.jpg";
+        public const string BBQLogo = "img/bbq-logo.jpg";
+        public const string BushCoal = "img/bush-coal.jpg";
+        public const string BushCoalCloseup = "img/bush-coal-closeup.jpg";
+        public const string CoalWoodGroup = "img/coal-wood-group.jpg";
+        public const string WoodCloseup1 = "img/wood-closeup1.jpg";
+        public const string WoodCloseup2 = "img/wood-closeup2.jpg";
+        public const string WoodBagged1 = "img/wood-bagged1.jpg";
+        public const string WoodBagged2 = "img/wood-bagged2.jpg";
     }
 }

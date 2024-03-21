@@ -1,18 +1,41 @@
 @page "/pit"
 @using SammysBBQ.Data
 
-<Heading TextColor="TextColor.Light">500 Gallon Trailered Offset Smoker (built by Bogline BBQ)</Heading>
+<Div ElementId="#b-animate">
+    <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
+        style="max-width: 100%!important; height: auto; overflow: hidden!important;">
+        <Heading TextColor="TextColor.Light">500 Gallon Trailered Offset Smoker (built by Bogline BBQ)</Heading>
 
-<Grid>
-    <Column ColumnSize="ColumnSize.Is1"></Column>
-    <Column ColumnSize="ColumnSize.Is3">
-        <Image Source="@ImageSources.BBQSideView" Fluid />
-    </Column>
-    <Column ColumnSize="ColumnSize.Is3">
-        <Image Source="@ImageSources.BBQFrontView" Fluid />
-    </Column>
-    <Column ColumnSize="ColumnSize.Is3">
-        <Image Source="@ImageSources.BBQTopView" Fluid />
-    </Column>
-    <Column ColumnSize="ColumnSize.Is1"></Column>
-</Grid>
+
+
+        <Grid>
+            <Column ColumnSize="ColumnSize.Is1"></Column>
+            <Column ColumnSize="ColumnSize.Is3">
+                <Image Source="@ImageSources.BBQSideView" Fluid />
+            </Column>
+            <Column ColumnSize="ColumnSize.Is3">
+                <Image Source="@ImageSources.BBQFrontView" Fluid />
+            </Column>
+            <Column ColumnSize="ColumnSize.Is3">
+                <Image Source="@ImageSources.BBQTopView" Fluid />
+            </Column>
+            <Column ColumnSize="ColumnSize.Is1"></Column>
+        </Grid>
+        <br>
+        <br>
+        <Grid>
+            <Column ColumnSize="ColumnSize.Is1"></Column>
+            <Column ColumnSize="ColumnSize.Is3">
+                <Image Source="@ImageSources.BBQOutsideDay" Fluid />
+            </Column>
+            <Column ColumnSize="ColumnSize.Is3">
+                <Image Source="@ImageSources.BBQOutsideNight" Fluid />
+            </Column>
+            <Column ColumnSize="ColumnSize.Is3">
+                <Image Source="@ImageSources.BBQLogo" Fluid />
+            </Column>
+            <Column ColumnSize="ColumnSize.Is1"></Column>
+        </Grid>
+
+    </Animate>
+</Div>

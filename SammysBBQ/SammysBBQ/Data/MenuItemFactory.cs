@@ -10,43 +10,43 @@ namespace SammysBBQ.Data
             MenuItemContent Brisket = new MenuItemContent()
             {
                 ItemName = "Brisket",
-                ItemImagePath = null,
+                ItemImagePath = ImageSources.Brisket,
                 Description = null
             };
             MenuItemContent PulledPork = new MenuItemContent()
             {
                 ItemName = "Pulled Pork",
-                ItemImagePath = null,
+                ItemImagePath = ImageSources.PulledPorkSandwich,
                 Description = null
             };
             MenuItemContent Lamb = new MenuItemContent()
             {
                 ItemName = "Lamb",
                 ItemImagePath = ImageSources.PulledLambCut1,
-                Description = "Indulge in the irresistible flavors of our slow-cooked pulled pork, a culinary masterpiece that promises to tantalize your taste buds with every savory bite. Crafted with care and expertise, our pulled pork is a celebration of tender, succulent meat infused with a symphony of seasonings and spices. Hand - selected pork shoulder is meticulously prepared and cooked to perfection over a low flame, allowing the rich flavors to develop and meld harmoniously.As the meat tenderizes, it absorbs the essence of our secret blend of spices, creating a mouthwatering symphony of taste that is both bold and nuanced."
+                Description = null
             };
             MenuItemContent Beef = new MenuItemContent()
             {
                 ItemName = "Beef",
-                ItemImagePath = ImageSources.BeefRibs,
+                ItemImagePath = ImageSources.SteakTacos,
                 Description = null
             };
             MenuItemContent Chicken = new MenuItemContent()
             {
                 ItemName = "Chicken",
-                ItemImagePath = ImageSources.ChickenWings,
+                ItemImagePath = ImageSources.Chicken,
                 Description = null
             };
             MenuItemContent BeefPorkRibs = new MenuItemContent()
             {
                 ItemName = "Beef/Pork Ribs",
-                ItemImagePath = ImageSources.StLouisRibs2,
+                ItemImagePath = ImageSources.StLouisRibs1,
                 Description = null
             };
             MenuItemContent Fish = new MenuItemContent()
             {
                 ItemName = "Fish (Rainbow Trout, Salmon)",
-                ItemImagePath = null,
+                ItemImagePath = ImageSources.MapleChipotleRainbowTrout,
                 Description = null
             };
 
