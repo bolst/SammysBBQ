@@ -1,5 +1,6 @@
 @page "/pit-master"
 @using SammysBBQ.Data
+@using SammysBBQ.Pages.Pit_Master.Components
 
 <Div ElementId="#b-animate">
     <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
@@ -12,9 +13,25 @@
                     <Image Source="@ImageSources.SammyWolfhead" Fluid />
                 </Div>
             </Column>
-            <Column ColumnSize="ColumnSize.Is6" TextAlignment="TextAlignment.Center">
-                <Lead TextColor="TextColor.Light">ahsdouisahdosahdoiush</Lead>
+            <Column ColumnSize="ColumnSize.Is7" TextAlignment="TextAlignment.Center">
+                <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+
+                    <PitHeader NewLines="2">MEET THE PIT MASTER - SAM SCALA</PitHeader>
+
+                    @foreach(string paragraph in IntroContent.Split(new string[]{"\n", "\r", "\r\n"}, StringSplitOptions.None))
+                    {
+                        <PitParagraph>@paragraph</PitParagraph>
+                    }
+
+                </Div>
+            </Column>
+            <Column ColumnSize="ColumnSize.Is1">
             </Column>
         </Grid>
     </Animate>
 </Div>
+
+@code{
+    private string IntroContent = "Sam does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and\nSam also does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and\nSam also does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and";
+
+}

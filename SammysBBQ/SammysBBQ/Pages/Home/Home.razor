@@ -1,6 +1,8 @@
 ﻿@page "/"
 @using SammysBBQ.Data
+@using SammysBBQ.Components
 @using SammysBBQ.Pages.Home.Components
+@inject NavigationManager NavManager
 
 <Div ElementId="#b-animate">
     <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
@@ -17,12 +19,7 @@
         <Flyers />
 
         <Div TextAlignment="TextAlignment.Center" Padding="Padding.Is5.FromTop.Is5.FromBottom">
-            <Button 
-                Color="Color.Primary" 
-                TextWeight="TextWeight.Bold"
-                Size="Size.ExtraLarge"
-                Type="ButtonType.Link"
-                To="/order">ORDER NOW</Button>
+            <DefaultButton To="/order">ORDER NOW</DefaultButton>
         </Div>
     </Animate>
 </Div>

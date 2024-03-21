@@ -1,5 +1,5 @@
 @using SammysBBQ.Data
-
+@using SammysBBQ.Components
 
 <Grid Columns="GridColumns.Are12.OnTablet.Are8.OnMobile" ElementId="#b-animater">
     <Column ColumnSize="ColumnSize.Is8">
@@ -11,11 +11,10 @@
             <JumbotronSubtitle TextWeight="TextWeight.Normal">
                 @Description
             </JumbotronSubtitle>
-            <Button Size="Size.ExtraLarge" Color="Color.Primary" TextWeight="TextWeight.Bold" Type="ButtonType.Link"
-                To="/menu">
+            <DefaultButton To="/menu">
                 @ButtonText
                 <Icon Name="IconName.ArrowRight" />
-            </Button>
+            </DefaultButton>
         </Jumbotron>
     </Column>
     <Column ColumnSize="ColumnSize.Is2.OnTablet.Is4.OnMobile">

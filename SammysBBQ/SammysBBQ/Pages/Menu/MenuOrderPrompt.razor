@@ -1,19 +1,19 @@
 ﻿@using SammysBBQ.Data
+@using SammysBBQ.Components
 
 <Container Fluid Padding="Padding.Is4.FromTop">
 
     <Heading TextColor="TextColor.White">@Lead</Heading>
-    <Button Size="Size.ExtraLarge" Color="Color.Primary" TextWeight="TextWeight.Bold" Type="ButtonType.Link"
-        To="/order">@ButtonText
+    <DefaultButton To="/order">@ButtonText
         <Icon Name="IconName.ArrowRight" />
-    </Button>
+    </DefaultButton>
 
 </Container>
 
 @code {
 
     private string Lead = "See something you like?";
-    private string ButtonText = "Order now";
+    private string ButtonText = "Order Now";
 
     protected override async Task OnInitializedAsync()
     {
