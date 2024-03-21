@@ -1,6 +1,4 @@
 ﻿
-using SammysBBQ.Pages.Menu;
-
 namespace SammysBBQ.Data
 {
     public class MenuItemFactory : AbsSingleton<MenuItemFactory>

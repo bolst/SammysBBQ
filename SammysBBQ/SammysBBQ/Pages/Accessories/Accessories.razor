@@ -3,42 +3,37 @@
 @using SammysBBQ.Pages.Accessories.Components
 @inject IJSRuntime JSRuntime
 
-@if (CanRender)
-{
+<Div ElementId="#b-animate">
+    <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
+        style="max-width: 100%!important; height: auto; overflow: hidden!important;">
 
-    <Div ElementId="#b-animate">
-        <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
-            style="max-width: 100%!important; height: auto; overflow: hidden!important;">
+        <AccessoryHeader />
 
-            <AccessoryHeader />
+        <br>
+        <br>
 
-            <br>
-            <br>
+        <AccessoryModule Title="@CoalTitle" HeaderIconName="IconName.Fire">
+            <CoalContent Data="@CoalData" />
+        </AccessoryModule>
 
-            <AccessoryModule Title="@CoalTitle" HeaderIconName="IconName.Fire">
-                <CoalContent Data="@CoalData" />
-            </AccessoryModule>
+        <br>
+        <br>
 
-            <br>
-            <br>
+        <AccessoryModule Title="@WoodTitle" HeaderIconName="IconName.Bars">
+            <WoodContent Data="@WoodData" />
+        </AccessoryModule>
 
-            <AccessoryModule Title="@WoodTitle" HeaderIconName="IconName.Bars">
-                <WoodContent Data="@WoodData" />
-            </AccessoryModule>
+    </Animate>
+</Div>
 
-        </Animate>
-    </Div>
-
-}
 <br>
 
 @code {
 
     private string CoalTitle = "Bog Line Bush Coal";
     private string WoodTitle = "Matt's Smokin' Firewood - Premium Smoking Wood";
-    private JsonElement CoalData;
-    private JsonElement WoodData;
-    private bool CanRender = false;
+    private JsonElement CoalData = AccessoryDataFactory.Instance.DefaultCoalData();
+    private JsonElement WoodData = AccessoryDataFactory.Instance.DefaultWoodData();
 
     private bool IsMobile { get; set; } = false;
     protected override async Task OnInitializedAsync()
@@ -54,17 +49,14 @@
             IsMobile = false;
         }
 
-        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "accessories" });
 
+        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "accessories" });
         if (data != null)
         {
             CoalTitle = data.RootElement.GetProperty("coal").GetProperty("title").GetProperty("data").ToString();
             WoodTitle = data.RootElement.GetProperty("wood").GetProperty("title").GetProperty("data").ToString();
             CoalData = data.RootElement.GetProperty("coal").GetProperty("content");
             WoodData = data.RootElement.GetProperty("wood").GetProperty("content");
-            CanRender = true;
         }
-        else
-            CanRender = false;
     }
 }
