@@ -1,67 +1,16 @@
 ﻿@page "/"
-@using SammysBBQ.Data
-@using SammysBBQ.Components
 @using SammysBBQ.Pages.Home.Components
-@inject NavigationManager NavManager
 
 <Div ElementId="#b-animate">
     <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
-                style="max-width: 100%!important; height: auto; overflow: hidden!important;">
-        <Div Class="spotlight-container"
-            Padding="Padding.Is4.FromBottom"
-            Border="Border.Rounded"
-            Display="Display.None.Block.OnFullHD">
-                <Spotlight />
-        </Div>
+        style="max-width: 100%!important; height: auto; overflow: hidden!important;">
+
+        <Spotlight />
 
         <CardPictureCombo />
 
         <Flyers />
 
-        <Div TextAlignment="TextAlignment.Center" Padding="Padding.Is5.FromTop.Is5.FromBottom">
-            <DefaultButton To="/order">ORDER NOW</DefaultButton>
-        </Div>
+        <OrderPrompt />
     </Animate>
 </Div>
-
-<style>
-    .spotlight-container {
-        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("@ImageSources.SteakBBQ");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        align-items: center;
-        height: 70vh;
-    }
-
-    body{
-        margin: 0;
-    }
-
-    .dualimg-container {
-        width: 100%; /* Set container width to 100% of the parent element (in this case, the body) */
-        max-width: 100%; /* Ensure the container does not exceed the viewport width */
-        padding: 10px; /* Add padding to the container if needed */
-        box-sizing: border-box; /* Include padding and border in the total width */
-        margin: 0 auto; /* Center the container horizontally, optional */
-    }
-
-    .dualimg-img{
-        width: 50%;
-        max-width: 50%;
-    }
-</style>
-
-@code{
-
-    const string ContainerBackgroundColor = "rgba(165, 181, 167,.15)";
-    const string ContainerBorderColor = "rgba(165, 181, 167,.15)";
-
-    const string ItemBackgroundColor = "rgba(95, 163, 103,.15)";
-    const string ItemBorderColor = "rgba(95, 163, 103,.15)";
-
-    string flexContainerStyle = $"background-color: {ContainerBackgroundColor};border: 1px solid {ContainerBorderColor};";
-    string alignItemsFlexContainerStyle = $"background-color: {ContainerBackgroundColor};border: 1px solid {ContainerBorderColor};height: 100px;";
-
-    string flexItemStyle = $"background-color: {ItemBackgroundColor}; border: 1px solid {ItemBorderColor};";
-}

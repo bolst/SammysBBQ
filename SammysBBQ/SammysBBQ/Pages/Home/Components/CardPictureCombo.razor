@@ -1,5 +1,4 @@
 @using SammysBBQ.Data
-@using SammysBBQ.Components
 
 <Grid Columns="GridColumns.Are12.OnTablet.Are8.OnMobile" ElementId="#b-animater">
     <Column ColumnSize="ColumnSize.Is8">
@@ -19,12 +18,12 @@
     </Column>
     <Column ColumnSize="ColumnSize.Is2.OnTablet.Is4.OnMobile">
         <Card Position="Position.Relative.Top.Is50.Start.Is50.Translate.Middle" Background="Background.Dark">
-            <CardImage Source="@ImageFactory.Instance.Square(ImageSources.SteakTacos)" Border="Border.Rounded" Fluid />
+            <CardImage Source="@ImageSource1" Border="Border.Rounded" Fluid />
         </Card>
     </Column>
     <Column ColumnSize="ColumnSize.Is2.OnTablet.Is4.OnMobile">
         <Card Position="Position.Relative.Top.Is50.Start.Is50.Translate.Middle" Background="Background.Dark">
-            <CardImage Source="@ImageFactory.Instance.Square(ImageSources.PulledLambCut1)" Border="Border.Rounded"
+            <CardImage Source="@ImageSource2" Border="Border.Rounded"
                 Fluid />
         </Card>
     </Column>
@@ -34,6 +33,8 @@
     private string Title = "Delivering Perfection";
     private string Description = "From corporate gatherings and weddings to backyard bashes and upscale soirées, Sammy's Q adapts to any occasion. Our diverse menu caters to all tastes, offering a tantalizing array of grilled delights, sides, and desserts that promise to satisfy every palate.";
     private string ButtonText = "CHECK OUT OUR MENU";
+    private string ImageSource1 = ImageFactory.Instance.Square(ImageSources.SteakTacos);
+    private string ImageSource2 = ImageFactory.Instance.Square(ImageSources.PulledLambCut1);
 
     protected override async Task OnInitializedAsync()
     {
@@ -44,6 +45,8 @@
             Title = data.RootElement.GetProperty("title").GetProperty("data").ToString();
             Description = data.RootElement.GetProperty("description").GetProperty("data").ToString();
             ButtonText = data.RootElement.GetProperty("button text").GetProperty("data").ToString();
+            ImageSource1 = data.RootElement.GetProperty("image 1").GetProperty("data").ToString();
+            ImageSource2 = data.RootElement.GetProperty("image 2").GetProperty("data").ToString();
         }
     }
 
