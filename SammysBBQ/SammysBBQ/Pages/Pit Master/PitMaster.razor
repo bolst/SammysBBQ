@@ -12,14 +12,14 @@
             @if(IsMobile)
             {
                 <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
-                        <PitHeader NewLines="2">MEET THE PIT MASTER - SAM SCALA</PitHeader>
+                        <PitHeader NewLines="2">@IntroHeader</PitHeader>
 
-                        <Image Source="@ImageSources.SammyWolfhead" Fluid />
+                        <Image Source="@IntroImage" Fluid />
 
                         <br>
                         <br>
 
-                        @foreach(string paragraph in IntroContent.Split(new string[]{"\n", "\r", "\r\n"}, StringSplitOptions.None))
+                        @foreach(string paragraph in IntroParagraph.Split(new string[]{"\n", "\r", "\r\n"}, StringSplitOptions.None))
                         {
                             <PitParagraph>@paragraph</PitParagraph>
                         }
@@ -30,15 +30,15 @@
             {
                 <Column ColumnSize="ColumnSize.Is3">
                     <Div>
-                        <Image Source="@ImageSources.SammyWolfhead" Fluid />
+                        <Image Source="@IntroImage" Fluid />
                     </Div>
                 </Column>
                 <Column ColumnSize="ColumnSize.Is7" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
 
-                        <PitHeader NewLines="2">MEET THE PIT MASTER - SAM SCALA</PitHeader>
+                        <PitHeader NewLines="2">@IntroHeader</PitHeader>
 
-                        @foreach(string paragraph in IntroContent.Split(new string[]{"\n", "\r", "\r\n"}, StringSplitOptions.None))
+                        @foreach(string paragraph in IntroParagraph.Split(new string[]{"\n", "\r", "\r\n"}, StringSplitOptions.None))
                         {
                             <PitParagraph>@paragraph</PitParagraph>
                         }
@@ -52,7 +52,10 @@
 </Div>
 
 @code{
-    private string IntroContent = "Sam does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and\nSam also does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and\nSam also does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and";
+    private string IntroHeader = "MEET THE PIT MASTER - SAM SCALA";
+    private string IntroParagraph = "Sam does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and\nSam also does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and\nSam also does this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and this and that and";
+    private string IntroImage = ImageSources.SammyWolfhead;
+
     private bool IsMobile { get; set; } = false;
 
     protected override async Task OnInitializedAsync()
@@ -66,6 +69,15 @@
             Console.WriteLine("Warning: JS DISCONNET");
             Console.WriteLine(exc.StackTrace);
             IsMobile = false;
+        }
+
+        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "pit master" });
+
+        if (data != null)
+        {
+            IntroHeader = data.RootElement.GetProperty("blurb 1").GetProperty("title").GetProperty("data").ToString();
+            IntroParagraph = data.RootElement.GetProperty("blurb 1").GetProperty("paragraph").GetProperty("data").ToString();
+            IntroImage = data.RootElement.GetProperty("blurb 1").GetProperty("image").GetProperty("data").ToString();
         }
     }
 }
