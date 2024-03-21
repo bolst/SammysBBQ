@@ -7,19 +7,19 @@
     @if (IsMobile)
     {
         <Column ColumnSize="ColumnSize.Is8" TextAlignment="TextAlignment.Center">
-            @HeaderDescription
-            @HeaderImage
+           <Paragraph TextSize="TextSize.ExtraLarge" TextColor="TextColor.Light">@ParagraphText</Paragraph>;
+            <Image Source="@ImageSource" Fluid />
         </Column>
     }
     else
     {
         <Column ColumnSize="ColumnSize.Is5" TextAlignment="TextAlignment.Center">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @HeaderDescription
+                <Paragraph TextSize="TextSize.ExtraLarge" TextColor="TextColor.Light">@ParagraphText</Paragraph>;
             </Div>
         </Column>
         <Column ColumnSize="ColumnSize.Is3" TextAlignment="TextAlignment.Center">
-            @HeaderImage
+            <Image Source="@ImageSource" Fluid />
         </Column>
     }
     <Column ColumnSize="ColumnSize.Is2"></Column>
@@ -28,25 +28,8 @@
 @code {
 
     private bool IsMobile = false;
-    private RenderFragment HeaderDescription = @<Paragraph TextSize="TextSize.ExtraLarge" TextColor="TextColor.Light">
-        Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories Description of
-        accessories</Paragraph>;
-    private RenderFragment HeaderImage = @<Image Source="@ImageSources.CoalWoodGroup" Fluid />;
+    private string ParagraphText = "Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories Description of accessories";
+    private string ImageSource = ImageSources.CoalWoodGroup;
 
     protected override async Task OnInitializedAsync()
     {
@@ -59,6 +42,14 @@
             Console.WriteLine("Warning: JS DISCONNET");
             Console.WriteLine(exc.StackTrace);
             IsMobile = false;
+        }
+
+        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "accessories" });
+
+        if (data != null)
+        {
+            ParagraphText = data.RootElement.GetProperty("header").GetProperty("text").GetProperty("data").ToString();
+            ImageSource = data.RootElement.GetProperty("header").GetProperty("image").GetProperty("data").ToString();
         }
     }
 }

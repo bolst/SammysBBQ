@@ -1,23 +1,24 @@
 @using SammysBBQ.Data
 @inject IJSRuntime JSRuntime
 
-
 <Grid Margin="Margin.IsAuto">
     <Column ColumnSize="ColumnSize.Is1"></Column>
     @if (IsMobile)
     {
         <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @CoalDescription
-                <a href="https://www.instagram.com/reel/C4jlxpAugNS/" target="blank"><Text TextColor="TextColor.Light">Bog
-                        Line
-                        Bush Coal Premium Charcoal</Text></a>
+                <Paragraph TextSize="TextSize.Large" TextColor="TextColor.Light">@CoalDescription</Paragraph>;
+                <a href="@LinkDestination" target="blank"><Text TextColor="TextColor.Light">@LinkTitle</Text></a>
+
                 <br>
                 <br>
-                @CoalImage1
+
+                <Image Source="@CoalImage1" Fluid />;
+
                 <br>
                 <br>
-                @CoalImage2
+
+                <Image Source="@CoalImage2" Fluid />
             </Div>
         </Column>
     }
@@ -25,49 +26,33 @@
     {
         <Column ColumnSize="ColumnSize.Is6">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @CoalDescription
-                <a href="https://www.instagram.com/reel/C4jlxpAugNS/" target="blank"><Text TextColor="TextColor.Light">Bog
-                        Line
-                        Bush Coal Premium Charcoal</Text></a>
+                <Paragraph TextSize="TextSize.Large" TextColor="TextColor.Light">@CoalDescription</Paragraph>;
+                <a href="@LinkDestination" target="blank"><Text TextColor="TextColor.Light">@LinkTitle</Text></a>
             </Div>
         </Column>
         <Column ColumnSize="ColumnSize.Is2">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @CoalImage1
+                <Image Source="@CoalImage1" Fluid />;
             </Div>
         </Column>
         <Column ColumnSize="ColumnSize.Is2">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @CoalImage2
+                <Image Source="@CoalImage2" Fluid />
             </Div>
         </Column>
     }
     <Column ColumnSize="ColumnSize.Is1"></Column>
 </Grid>
 
+
 @code {
-    private RenderFragment CoalDescription = @<Paragraph TextSize="TextSize.Large" TextColor="TextColor.Light">
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-        Coal Description
-    </Paragraph>;
-    private RenderFragment CoalImage1 = @<Image Source="@ImageSources.BushCoal" Fluid />;
-    private RenderFragment CoalImage2 = @<Image Source="@ImageSources.BushCoalCloseup" Fluid />;
+    [Parameter] public JsonElement Data { get; set; }
+    private string CoalDescription = "Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description Coal Description";
+    private string CoalImage1 = ImageSources.BushCoal;
+    private string CoalImage2 = ImageSources.BushCoalCloseup;
+    private string LinkDestination = "https://www.instagram.com/reel/C4jlxpAugNS/";
+    private string LinkTitle = "Bog Line Bush Coal Premium Charcoal";
+
 
     private bool IsMobile = false;
 
@@ -83,5 +68,13 @@
             Console.WriteLine(exc.StackTrace);
             IsMobile = false;
         }
+
+        CoalDescription = Data.GetProperty("text").GetProperty("data").ToString();
+        CoalImage1 = Data.GetProperty("image 1").GetProperty("data").ToString();
+        CoalImage2 = Data.GetProperty("image 2").GetProperty("data").ToString();
+        LinkTitle = Data.GetProperty("link title").GetProperty("data").ToString();
+        LinkDestination = Data.GetProperty("link destination").GetProperty("data").ToString();
+
+
     }
 }

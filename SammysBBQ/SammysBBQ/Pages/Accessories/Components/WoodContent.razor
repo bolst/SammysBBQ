@@ -7,23 +7,20 @@
     {
         <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @WoodDescription
-                <a href="https://www.mattswood.online/" target="blank"><Text TextColor="TextColor.Light">Matt's
-                        Smokin' Firewood
-                        - Premium
-                        Smoking Wood</Text></a>
+                <Paragraph TextSize="TextSize.Large" TextColor="TextColor.Light">@WoodDescription</Paragraph>
+                <a href="@LinkDestination" target="blank"><Text TextColor="TextColor.Light">@LinkTitle</Text></a>
                 <br>
                 <br>
-                @WoodImage1
+                <Image Source="@WoodImage1" Fluid />
                 <br>
                 <br>
-                @WoodImage2
+                <Image Source="@WoodImage2" Fluid />
                 <br>
                 <br>
-                @WoodImage3
+                <Image Source="@WoodImage3" Fluid />
                 <br>
                 <br>
-                @WoodImage4
+                <Image Source="@WoodImage4" Fluid />
             </Div>
         </Column>
     }
@@ -31,32 +28,29 @@
     {
         <Column ColumnSize="ColumnSize.Is5">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @WoodDescription
-                <a href="https://www.mattswood.online/" target="blank"><Text TextColor="TextColor.Light">Matt's
-                        Smokin' Firewood
-                        - Premium
-                        Smoking Wood</Text></a>
+                <Paragraph TextSize="TextSize.Large" TextColor="TextColor.Light">@WoodDescription</Paragraph>
+                <a href="@LinkDestination" target="blank"><Text TextColor="TextColor.Light">@LinkTitle</Text></a>
             </Div>
         </Column>
 
         <Column ColumnSize="ColumnSize.Is2">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @WoodImage1
+                <Image Source="@WoodImage1" Fluid />
             </Div>
         </Column>
         <Column ColumnSize="ColumnSize.Is2">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @WoodImage2
+                <Image Source="@WoodImage2" Fluid />
             </Div>
         </Column>
         <Column ColumnSize="ColumnSize.Is2">
             <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                @WoodImage3
+                <Image Source="@WoodImage3" Fluid />
 
                 <br>
                 <br>
 
-                @WoodImage4
+                <Image Source="@WoodImage4" Fluid />
             </Div>
         </Column>
     }
@@ -64,30 +58,15 @@
 </Grid>
 
 @code {
-    private RenderFragment WoodDescription = @<Paragraph TextSize="TextSize.Large" TextColor="TextColor.Light">
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-        Wood Description
-    </Paragraph>;
-    private RenderFragment WoodImage1 = @<Image Source="@ImageSources.WoodBagged1" Fluid />;
-    private RenderFragment WoodImage2 = @<Image Source="@ImageSources.WoodBagged2" Fluid />;
-    private RenderFragment WoodImage3 = @<Image Source="@ImageSources.WoodCloseup1" Fluid />;
-    private RenderFragment WoodImage4 = @<Image Source="@ImageSources.WoodCloseup2" Fluid />;
+    [Parameter] public JsonElement Data { get; set; }
+    private string WoodDescription = "Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description Wood Description";
+    private string WoodImage1 = ImageSources.WoodBagged1;
+    private string WoodImage2 = ImageSources.WoodBagged2;
+    private string WoodImage3 = ImageSources.WoodCloseup1;
+    private string WoodImage4 = ImageSources.WoodCloseup2;
+    private string LinkDestination = "https://www.mattswood.online/";
+    private string LinkTitle = "Matt's Smokin' Firewood - Premium Smoking Wood";
+
 
     private bool IsMobile = false;
 
@@ -103,5 +82,13 @@
             Console.WriteLine(exc.StackTrace);
             IsMobile = false;
         }
+
+        WoodDescription = Data.GetProperty("text").GetProperty("data").ToString();
+        WoodImage1 = Data.GetProperty("image 1").GetProperty("data").ToString();
+        WoodImage2 = Data.GetProperty("image 2").GetProperty("data").ToString();
+        WoodImage3 = Data.GetProperty("image 2").GetProperty("data").ToString();
+        WoodImage4 = Data.GetProperty("image 2").GetProperty("data").ToString();
+        LinkTitle = Data.GetProperty("link title").GetProperty("data").ToString();
+        LinkDestination = Data.GetProperty("link destination").GetProperty("data").ToString();
     }
 }
