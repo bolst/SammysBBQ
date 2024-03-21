@@ -1,56 +1,142 @@
 @page "/pit"
 @using SammysBBQ.Data
-@*@using SammysBBQ.Pages.Pit.Components*@
+@using SammysBBQ.Pages.Pit.Components
+@inject IJSRuntime JSRuntime
+
 
 <Div ElementId="#b-animate">
     <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
         style="max-width: 100%!important; height: auto; overflow: hidden!important;">
 
-        <br>
-        <br>
-        <br>
-
-        <Heading TextColor="TextColor.Light">500 Gallon Trailered Offset Smoker (built by Bog Line BBQ)</Heading>
+        <PitBar />
 
         <Grid>
-            <Column ColumnSize="ColumnSize.Is4" TextAlignment="TextAlignment.Center">
-                <DisplayHeading TextColor="TextColor.Light">MY PIT</DisplayHeading>
-            </Column>
-            <Column ColumnSize="ColumnSize.Is4" TextAlignment="TextAlignment.Center">
-                <Image Source="@ImageSources.BBQSideView" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is4">
-            </Column>
+            <Column ColumnSize="ColumnSize.Is1"></Column>
+            @if (IsMobile)
+            {
+                <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center" Margin="Margin.IsAuto">
+                    <PitHeading>Allo mate</PitHeading>
+                    <PitParagraph>500 Gallon Trailered Offset Smoker (built by Bog Line BBQ)</PitParagraph>
+                    <PitImage Source="@ImageSources.BBQSideView">
+                        <Lead TextColor="TextColor.Light">Bog Line BBQ - 500 Gallon Trailered Offset Smoker</Lead>
+                    </PitImage>
+                </Column>
+            }
+            else
+            {
+                <Column ColumnSize="ColumnSize.Is6" TextAlignment="TextAlignment.Center">
+                    <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                        <PitHeading>Allo mate</PitHeading>
+                        <PitParagraph>500 Gallon Trailered Offset Smoker (built by Bog Line BBQ)</PitParagraph>
+                    </Div>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is4">
+                    <PitImage Source="@ImageSources.BBQSideView">
+                        <Lead TextColor="TextColor.Light">Bog Line BBQ - 500 Gallon Trailered Offset Smoker</Lead>
+                    </PitImage>
+                </Column>
+            }
         </Grid>
 
+        <br>
+
         <Grid>
             <Column ColumnSize="ColumnSize.Is1"></Column>
-            <Column ColumnSize="ColumnSize.Is3">
-                <Image Source="@ImageSources.BBQSideView" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is3">
-                <Image Source="@ImageSources.BBQFrontView" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is3">
-                <Image Source="@ImageSources.BBQTopView" Fluid />
-            </Column>
+            @if (IsMobile)
+            {
+                <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
+                    <PitImage Source="@ImageSources.BBQLogo" />
+                    <br>
+                    <PitHeading>Another Header</PitHeading>
+                    <PitParagraph>Bunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
+                        of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
+                        wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
+                        other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
+                        of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
+                        wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
+                        other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
+                        of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
+                        wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
+                        other wordsBunch of other wordsBunch of other wordsBunch of other words</PitParagraph>
+                </Column>
+            }
+            else
+            {
+                <Column ColumnSize="ColumnSize.Is3">
+                    <PitImage Source="@ImageSources.BBQLogo" />
+                </Column>
+                <Column ColumnSize="ColumnSize.Is7" TextAlignment="TextAlignment.Center">
+                    <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                        <PitHeading>Another Header</PitHeading>
+                        <PitParagraph>Bunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
+                            of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
+                            wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
+                            other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
+                            of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
+                            wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
+                            other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch
+                            of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other
+                            wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of other wordsBunch of
+                            other wordsBunch of other wordsBunch of other wordsBunch of other words</PitParagraph>
+                    </Div>
+                </Column>
+            }
             <Column ColumnSize="ColumnSize.Is1"></Column>
         </Grid>
+
         <br>
         <br>
+
         <Grid>
             <Column ColumnSize="ColumnSize.Is1"></Column>
-            <Column ColumnSize="ColumnSize.Is3">
-                <Image Source="@ImageSources.BBQOutsideDay" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is3">
-                <Image Source="@ImageSources.BBQOutsideNight" Fluid />
-            </Column>
-            <Column ColumnSize="ColumnSize.Is3">
-                <Image Source="@ImageSources.BBQLogo" Fluid />
-            </Column>
+            @if (IsMobile)
+            {
+                <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
+                    <PitImage Source="@ImageSources.BBQOutsideDay" />
+                    <br>
+                    <PitImage Source="@ImageSources.BBQTopView" />
+                    <br>
+                    <PitImage Source="@ImageSources.BBQOutsideNight" />
+                </Column>
+            }
+            else
+            {
+                <Column ColumnSize="ColumnSize.Is3" TextAlignment="TextAlignment.Center">
+                    <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                        <PitImage Source="@ImageSources.BBQOutsideDay" />
+                    </Div>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is5" TextAlignment="TextAlignment.Center">
+                    <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                        <PitImage Source="@ImageSources.BBQTopView" />
+                    </Div>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is2" TextAlignment="TextAlignment.Center">
+                    <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
+                        <PitImage Source="@ImageSources.BBQOutsideNight" />
+                    </Div>
+                </Column>
+            }
             <Column ColumnSize="ColumnSize.Is1"></Column>
         </Grid>
 
     </Animate>
 </Div>
+
+@code {
+    private bool IsMobile { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            IsMobile = await JSRuntime.InvokeAsync<bool>("isDevice");
+        }
+        catch (JSDisconnectedException exc)
+        {
+            Console.WriteLine("Warning: JS DISCONNET");
+            Console.WriteLine(exc.StackTrace);
+            IsMobile = false;
+        }
+    }
+}

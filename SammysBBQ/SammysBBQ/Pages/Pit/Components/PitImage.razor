@@ -1,0 +1,21 @@
+@namespace SammysBBQ.Pages.Pit.Components
+
+<Card Background="Background.Dark" Border="Border.Is1.Rounded.Light" Width="Width.Is100" Margin="Margin.IsAuto">
+    <CardBody>
+        <Divider />
+        <Row>
+            <Image Source="@Source" Fluid />
+        </Row>
+        <Divider />
+
+        <Row TextAlignment="TextAlignment.Center">
+            @ChildContent
+        </Row>
+
+    </CardBody>
+</Card>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string? Source { get; set; }
+}
