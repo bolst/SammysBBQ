@@ -17,9 +17,9 @@
                 <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center" Margin="Margin.IsAuto">
                     <PitHeading>@Title1</PitHeading>
                     <PitParagraph>@Paragraph1</PitParagraph>
-                    <PitImage Source="@ImageSource1">
+                    <FancyImage Source="@ImageSource1">
                         <Lead TextColor="TextColor.Light">@ImageCaption1</Lead>
-                    </PitImage>
+                    </FancyImage>
                 </Column>
             }
             else
@@ -31,9 +31,9 @@
                     </Div>
                 </Column>
                 <Column ColumnSize="ColumnSize.Is4">
-                    <PitImage Source="@ImageSource1">
+                    <FancyImage Source="@ImageSource1">
                         <Lead TextColor="TextColor.Light">@ImageCaption1</Lead>
-                    </PitImage>
+                    </FancyImage>
                 </Column>
             }
         </Grid>
@@ -45,7 +45,7 @@
             @if (IsMobile)
             {
                 <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
-                    <PitImage Source="@ImageSource2" />
+                    <FancyImage Source="@ImageSource2" />
                     <br>
                     <PitHeading>@Title2</PitHeading>
                     <PitParagraph>@Paragraph2</PitParagraph>
@@ -54,7 +54,7 @@
             else
             {
                 <Column ColumnSize="ColumnSize.Is3">
-                    <PitImage Source="@ImageSource2" />
+                    <FancyImage Source="@ImageSource2" />
                 </Column>
                 <Column ColumnSize="ColumnSize.Is7" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
@@ -74,28 +74,28 @@
             @if (IsMobile)
             {
                 <Column ColumnSize="ColumnSize.Is10" TextAlignment="TextAlignment.Center">
-                    <PitImage Source="@ImageSource3_1" />
+                    <FancyImage Source="@ImageSource3_1" />
                     <br>
-                    <PitImage Source="@ImageSource3_2" />
+                    <FancyImage Source="@ImageSource3_2" />
                     <br>
-                    <PitImage Source="@ImageSource3_3" />
+                    <FancyImage Source="@ImageSource3_3" />
                 </Column>
             }
             else
             {
                 <Column ColumnSize="ColumnSize.Is3" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                        <PitImage Source="@ImageSource3_1" />
+                        <FancyImage Source="@ImageSource3_1" />
                     </Div>
                 </Column>
                 <Column ColumnSize="ColumnSize.Is5" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                        <PitImage Source="@ImageSource3_2" />
+                        <FancyImage Source="@ImageSource3_2" />
                     </Div>
                 </Column>
                 <Column ColumnSize="ColumnSize.Is2" TextAlignment="TextAlignment.Center">
                     <Div Position="Position.Relative.Top.Is50.Translate.MiddleY">
-                        <PitImage Source="@ImageSource3_3" />
+                        <FancyImage Source="@ImageSource3_3" />
                     </Div>
                 </Column>
             }

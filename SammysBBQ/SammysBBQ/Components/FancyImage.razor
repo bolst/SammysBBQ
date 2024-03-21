@@ -1,6 +1,4 @@
-@namespace SammysBBQ.Pages.Pit.Components
-
-<Card Background="Background.Dark" Border="Border.Is1.Rounded.Light" Width="Width.Is100" Margin="Margin.IsAuto">
+<Card Background="Background.Dark" Border="@BorderOptions" Width="Width.Is100" Margin="Margin.IsAuto">
     <CardBody>
         <Divider />
         <Row>
@@ -18,4 +16,5 @@
 @code {
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public string? Source { get; set; }
+    [Parameter] public IFluentBorder BorderOptions { get; set; } = Border.Is1.Rounded.Light;
 }

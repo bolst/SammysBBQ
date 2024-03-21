@@ -13,7 +13,7 @@
 
                 @foreach (MenuContent content in MenuContents)
                 {
-                    <FloatingJumbotron Title="@content.title.data">
+                    <FloatingJumbotron Title="@content.title.data" ShadowColor="Background.Light">
                         <UnorderedList Unstyled>
                             @foreach (MenuItemContent item in content.items.data)
                             {
