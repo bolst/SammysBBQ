@@ -1,5 +1,6 @@
 ﻿@page "/menu"
 @using SammysBBQ.Data
+@using SammysBBQ.Pages.Menu.Components
 
 <Div ElementId="#b-animate">
     <Animate Anchor="#b-animate" Animation="Animations.ZoomIn" DelayMilliseconds="100"
@@ -10,21 +11,20 @@
 
                 <MenuImages />
 
-                <Jumbotron Width="Width.Is75" Margin="Margin.IsAuto" Background="Background.Dark"
-                    Style="box-shadow: var(--b-theme-primary) 0px 2px 12px 0px;">
+                @foreach (MenuContent content in MenuContents)
+                {
+                    <FloatingJumbotron Title="@content.title.data">
+                        <UnorderedList Unstyled>
+                            @foreach (MenuItemContent item in content.items.data)
+                            {
+                                <MenuItem Content="@item" />
+                            }
+                        </UnorderedList>
+                    </FloatingJumbotron>
 
-                    <JumbotronTitle Size="JumbotronTitleSize.Is1">@MenuTitle</JumbotronTitle>
+                    <br>
+                }
 
-                    <Divider />
-
-                    <UnorderedList Unstyled>
-                        @foreach (MenuItemContent item in MenuItemContents)
-                        {
-                            <MenuItem Content="@item" />
-                        }
-                    </UnorderedList>
-
-                </Jumbotron>
 
                 <MenuOrderPrompt />
 
@@ -35,20 +35,27 @@
     </Animate>
 </Div>
 
+
 @code {
 
-    private string MenuTitle = "BBQ Menu";
-    private List<MenuItemContent> MenuItemContents = MenuItemFactory.Instance.DefaultBBQMenuItems();
+    private MenuContent DefaultMenuContent = new MenuContent()
+        {
+            title = new MenuContentRoot() { data = "BBQ Menu" },
+            items = new MenuItemContentRoot() { data = MenuItemFactory.Instance.DefaultBBQMenuItems() }
+        };
+    private List<MenuContent> MenuContents = new List<MenuContent>();
 
     protected override async Task OnInitializedAsync()
     {
-        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "menu", "bbq menu" });
+        JsonDocument? data = await ApiDataFactory.Instance.Get(new List<string>() { "root", "menu", "menus" });
         if (data != null)
         {
-            MenuTitle = data.RootElement.GetProperty("title").GetProperty("data").ToString();
-
-            var d = data.RootElement.GetProperty("items").GetProperty("data");
-            MenuItemContents = JsonSerializer.Deserialize<List<MenuItemContent>>(d);
+            var d = data.RootElement;
+            MenuContents = JsonSerializer.Deserialize<List<MenuContent>>(d);
+        }
+        else
+        {
+            MenuContents = new List<MenuContent>() { DefaultMenuContent };
         }
     }
 }
