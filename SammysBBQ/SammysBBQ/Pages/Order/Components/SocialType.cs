@@ -11,8 +11,11 @@ namespace SammysBBQ.Pages.Order
 
     public static class SocialTypeExtensions
     {
-        public readonly static string PhoneNumber = "519-991-5596";
+        public readonly static string PhoneNumber = "?";
         public readonly static string Email = "sammys.q.bbq@gmail.com";
+
+        public const string EmailBody = "";
+        public const string EmailSubject = "";
 
 
 
@@ -62,19 +65,12 @@ namespace SammysBBQ.Pages.Order
             {
                 case SocialType.Instagram:
                     return "https://www.instagram.com/sammys.q.bbq";
-                    break;
                 case SocialType.Facebook:
                     return "https://www.facebook.com/profile.php?id=61550601187339";
-                    break;
                 case SocialType.Phone:
                     return $"tel:{PhoneNumber}";
-                    break;
                 case SocialType.Email:
-                    {
-                        string subject = "";
-                        string body = "";
-                        return $"mailto:Sammy's%20Q<{Email}>?subject={subject}&body={body}";
-                    }
+                    return $"mailto:Sammy's%20Q<{Email}>?subject={EmailSubject}&body={EmailBody}";
                 default:
                     return String.Empty;
             }
